@@ -1,0 +1,105 @@
+:root {
+  --thread: clamp(1rem, 8vw, 2rem);
+}
+
+details {
+  margin: .5rem 0;
+  position: relative;
+}
+
+details details {
+  margin-left: calc(var(--thread) + .5rem);
+}
+
+details.content-warning {
+  margin-left: 0;
+  background: rgba(0,0,0,.4);
+  border-radius: .75rem;
+  display: inline-block;
+  padding: .25rem;
+}
+
+summary {
+  list-style: none;
+  display: flex;
+  gap: .25rem;
+  place-items: center;
+  font-size: .75rem;
+  line-height: 1rem;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details:not([open]) > summary::before {
+  content: "";
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' %3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E") center no-repeat;
+  width: 1rem;
+  height: 1rem;
+  opacity: .4;
+}
+
+details[open]:not(.content-warning) > summary::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--thread) + .5rem);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--thread);
+  display: block;
+  color: rgba(0,0,0,.4);
+  background: linear-gradient(
+    to right,
+    transparent calc(var(--thread) / 2 - 1px),
+    currentColor calc(var(--thread) / 2 - 1px),
+    currentColor calc(var(--thread) / 2 + 1px),
+    transparent calc(var(--thread) / 2 + 1px)
+  );
+}
+
+details.content-warning > summary::before {
+  content: "";
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>') center no-repeat;
+  width: 1rem;
+  height: 1rem;
+  opacity: 1;
+}
+
+.profile {
+  display: flex;
+  gap: .5rem;
+  place-items: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.profile-img {
+  width: var(--thread);
+  height: var(--thread);
+  border-radius: var(--thread);
+  object-fit: cover;
+}
+
+.permalink {
+  text-align: right;
+  text-decoration: none;
+  color: rgba(0,0,0,.6);
+}
+
+.contents {
+  padding-left: calc(var(--thread) + .5rem);
+  font-size: 0.875rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+  margin: 0;
+  padding: 0 .5rem;
+}

@@ -22,6 +22,9 @@ summary {
   place-items: center;
   font-size: .75rem;
   line-height: 1rem;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 details > summary::-webkit-details-marker {
@@ -70,6 +73,15 @@ details[open]:not(.content-warning) > summary::before {
   object-fit: cover;
 }
 
+.user {
+  display: flex;
+  flex-direction: column;
+}
+
+.handle {
+  display: none;
+}
+
 .permalink {
   text-align: right;
   text-decoration: none;
@@ -79,6 +91,19 @@ details[open]:not(.content-warning) > summary::before {
 .contents {
   padding-left: calc(var(--thread) + .5rem);
   font-size: 0.875rem;
+}
+
+.ellipsis::after {
+  content: "…";
+}
+
+.invisible {
+  position: absolute;
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
 }
 
 details.content-warning > summary {
@@ -97,10 +122,25 @@ details.content-warning > summary::after {
   padding: .25rem .5rem;
   font-size: 0.75rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 details.content-warning[open] > summary::after {
   content: "Show Less";
+}
+
+@media screen and (min-width: 25rem) {
+  .handle {
+    display: block;
+  }
+
+  .profile {
+    flex: 1;
+  }
+
+  .profile + span {
+    display: none;
+  }
 }
 
 * {
